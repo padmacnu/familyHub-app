@@ -84,13 +84,14 @@ export default function UnitusApp() {
               <div key={key} className="bg-hpe-card border border-hpe-border shadow-lg overflow-hidden">
                 <div className="flex items-center p-6">
                   <div 
-                    onClick={() => setTasks({...tasks, [taskId]: !tasks[taskId]})}
-                    className={`w-12 h-12 border-2 mr-6 flex items-center justify-center cursor-pointer transition-all ${
-                      tasks[taskId] ? 'bg-hpe-brand border-hpe-brand' : 'border-hpe-border hover:border-hpe-brand/40'
-                    }`}
-                  >
-                    {tasks[taskId] && <span className="text-white font-black text-xl">✓</span>}
-                  </div>
+  onClick={() => setTasks({...tasks, [taskId]: !tasks[taskId]})}
+  className={`w-12 h-12 border-2 mr-6 flex items-center justify-center cursor-pointer transition-all ${
+    tasks[taskId] ? 'bg-hpe-brand border-hpe-brand' : 'border-hpe-border hover:border-hpe-brand/40'
+  }`}
+>
+  {/* Explicitly set checkmark to black to pop against the green background */}
+  {tasks[taskId] && <span className="text-white font-black text-xl">✓</span>}
+</div>
                   <div className="flex-1" onClick={() => setShowInsight(isOpen ? null : key)}>
                     <h3 className={`font-bold text-lg tracking-tight uppercase ${tasks[taskId] ? 'text-hpe-brand' : 'text-hpe-heading'}`}>
                       {data.title}
@@ -102,7 +103,7 @@ export default function UnitusApp() {
                 </div>
                 {isOpen && (
                   <div className="p-8 bg-black/40 border-t border-hpe-border animate-in fade-in zoom-in-95">
-                    <p className="text-sm text-hpe-text leading-relaxed font-light mb-6">
+                    <p className="text-sm text-hpe-text leading-relaxed font-light mb-10">
                       {renderScienceText(data.why)}
                     </p>
                     <div className="grid grid-cols-2 gap-4">
@@ -160,7 +161,9 @@ export default function UnitusApp() {
               {['Dad', 'Mom', 'Kids'].map(member => (
                 <button 
                   key={member}
-                  className="py-4 border border-hpe-border text-[10px] uppercase font-black hover:bg-hpe-brand hover:text-black transition-all tracking-widest"
+                  className="py-4 border border-hpe-border text-[10px] uppercase font-black 
+                 text-white hover:bg-hpe-brand hover:text-white transition-all 
+                 tracking-widest cursor-pointer"
                 >
                   {member}
                 </button>
